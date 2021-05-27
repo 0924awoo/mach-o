@@ -41,6 +41,7 @@ int load_macho_header_64(FILE *f, struct mach_header_64 *h) {
 	printf("flags = 0x%08x\n", h->flags);
 	printf("reserved = 0x%08x\n", h->reserved);
 
+	printf("\n");
 	return 0;
 }
 
@@ -55,6 +56,7 @@ int load_symtab_command(FILE *f, struct symtab_command *symtab_cmd) {
 	printf("stroff = 0x%08x\n", symtab_cmd->stroff);
 	printf("strsize = 0x%08x\n", symtab_cmd->strsize);
 
+	printf("\n");
 	return 0;
 }
 
@@ -71,6 +73,7 @@ int load_nlist_64(FILE *f, struct nlist_64 *nl_64) {
 	printf("n_desc = 0x%04x\n", nl_64->n_desc);
 	printf("n_value = 0x%016llx\n", nl_64->n_value);
 
+	printf("\n");
 	return 0;
 }
 
@@ -97,6 +100,7 @@ int load_segment_command_64(FILE *f, struct segment_command_64 *seg_cmd_64) {
 	printf("nsects = 0x%08x\n", seg_cmd_64->nsects);
 	printf("flags = 0x%08x\n", seg_cmd_64->flags);
 
+	printf("\n");
 	return 0;
 }
 
@@ -128,6 +132,7 @@ int load_section_64(FILE *f, struct section_64 *sect64) {
 	printf("reserved2 = 0x%08x\n", sect64->reserved2);
 	printf("reserved3 = 0x%08x\n", sect64->reserved3);
 
+	printf("\n");
 	return 0;
 }
 
@@ -149,6 +154,7 @@ int load_relocation_info(FILE *f, struct relocation_info *reloc_info) {
 	printf("r_pcrel = 0x%x\n", reloc_info->r_address);
 	printf("r_symbolnum = 0x%06x\n", reloc_info->r_address);
 
+	printf("\n");
 	return 0;
 }
 

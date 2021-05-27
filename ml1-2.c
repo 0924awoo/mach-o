@@ -62,6 +62,21 @@ int main(int argc, char** argv) {
 		goto end;
 	}
 
+	
+	load_commands = (struct load_command *) malloc(sizeof(struct load_command) * mach_header.ncmds);
+
+	int i;
+	for (i=0; i < mach_header.ncmds; i++) {
+		fread(&load_commands[i].cmd, sizeof(uint32_t), 1, f);
+		fread(&load_commands[i].cmdsize, sizeof(uint32_t), 1, f);
+		printf("=== cmd = 0x%08x, cmdsize = 0x%08x ===\n",
+			load_commands[i].cmd, load_commands[i].cmdsize);
+
+		// skip
+		fseek(f, load_commands[i].cmdsize - (sizeof(uint32_t) * 2), SEEK_CUR);
+	}
+
+	free(load_commands);
 end:
 	if (f != 0) {
 		fclose(f);
